@@ -1,0 +1,180 @@
+{
+    "environment": "development",
+    "business": "670cec9d25852ba485d74273",
+    "data": {
+        "object": {
+            "_id": "67af0942376903b183b034b4",
+            "business": "670cec9d25852ba485d74273",
+            "customer": {
+                "_id": "670cf0ad25852ba485d7590d",
+                "business": "670cec9d25852ba485d74273",
+                "type": "individual",
+                "name": "Shamsuddeen Omacy",
+                "phoneNumber": "+234 801234567",
+                "emailAddress": "john@doe.com",
+                "status": "active",
+                "individual": {
+                    "firstName": "Shamsuddeen",
+                    "lastName": "Omacy",
+                    "dob": "1996-10-23T10:20:11.998Z",
+                    "identity": {
+                        "type": "BVN",
+                        "number": "3434343e434",
+                        "_id": "670cf0ad25852ba485d7590f"
+                    },
+                    "documents": {
+                        "_id": "670cf0ad25852ba485d75910"
+                    },
+                    "_id": "670cf0ad25852ba485d7590e"
+                },
+                "billingAddress": {
+                    "line1": "Ademola Ade. Cres.",
+                    "line2": "",
+                    "city": "Wuse 2",
+                    "state": "FCT",
+                    "country": "Nigeria",
+                    "postalCode": "662222"
+                },
+                "isDeleted": false,
+                "createdAt": "2024-10-14T10:21:33.674Z",
+                "updatedAt": "2024-10-14T10:21:33.674Z"
+            },
+            "account": {
+                "_id": "670cf0d425852ba485d75aa3",
+                "business": "670cec9d25852ba485d74273",
+                "type": "wallet",
+                "currency": "NGN",
+                "accountName": "SUDO / Shamsuddeen Omacy",
+                "bankCode": "999240",
+                "accountType": "Current",
+                "accountNumber": "8022418098",
+                "currentBalance": 0,
+                "availableBalance": 0,
+                "provider": "SafeHaven",
+                "providerReference": "670cf0d33011ac0024537c52",
+                "referenceCode": "subacc_1728901330971",
+                "reloadable": true,
+                "isDefault": true,
+                "isDeleted": false,
+                "createdAt": "2024-10-14T10:22:12.442Z",
+                "updatedAt": "2024-10-14T10:22:12.442Z",
+                "charges": [],
+                "__v": 0
+            },
+            "card": {
+                "_id": "670cf0d525852ba485d75ab9",
+                "business": "670cec9d25852ba485d74273",
+                "customer": "670cf0ad25852ba485d7590d",
+                "account": "670cf0d425852ba485d75aa3",
+                "fundingSource": {
+                    "_id": "670cece725852ba485d745c7",
+                    "business": "670cec9d25852ba485d74273",
+                    "type": "gateway",
+                    "status": "active",
+                    "jitGateway": {
+                        "url": "https://webhook.site/07a630d9-ea61-47bc-a14e-e7e7857bea6e",
+                        "authorizationHeader": "***",
+                        "authorizeByDefault": false,
+                        "_id": "670cece725852ba485d745c8"
+                    },
+                    "isDefault": false,
+                    "isDeleted": false,
+                    "createdAt": "2024-10-14T10:05:27.926Z",
+                    "updatedAt": "2025-02-14T09:12:43.761Z",
+                    "__v": 0
+                },
+                "type": "virtual",
+                "brand": "Verve",
+                "currency": "NGN",
+                "maskedPan": "506321******3531",
+                "expiryMonth": "06",
+                "expiryYear": "25",
+                "status": "active",
+                "is2FAEnabled": true,
+                "is2FAEnrolled": true,
+                "isDefaultPINChanged": true,
+                "disposable": false,
+                "refundAccount": null,
+                "isDeleted": false,
+                "createdAt": "2024-10-14T10:22:13.170Z",
+                "updatedAt": "2024-11-26T03:33:55.778Z",
+                "__v": 0
+            },
+            "amount": 0,
+            "fee": 5,
+            "vat": 0,
+            "approved": false,
+            "currency": "NGN",
+            "status": "pending",
+            "authorizationMethod": "chip",
+            "balanceTransactions": [],
+            "merchantAmount": 1000,
+            "merchantCurrency": "NGN",
+            "merchant": {
+                "category": "7399",
+                "name": "SUDO SIMULATOR",
+                "merchantId": "SUDOSIMULATOR01",
+                "city": "JAHI",
+                "state": "AB",
+                "country": "NG",
+                "postalCode": "100001",
+                "_id": "67af0942376903b183b034b5"
+            },
+            "terminal": {
+                "rrn": "142123123678",
+                "stan": "102007",
+                "terminalId": "2SUDOSIM",
+                "terminalOperatingEnvironment": "on_premise",
+                "terminalAttendance": "unattended",
+                "terminalType": "pos",
+                "panEntryMode": "magnetic_stripe",
+                "pinEntryMode": "magnetic_stripe",
+                "cardHolderPresence": true,
+                "cardPresence": true,
+                "_id": "67af0942376903b183b034b6"
+            },
+            "transactionMetadata": {
+                "channel": "pos",
+                "type": "purchase",
+                "reference": "8022418098142123123678",
+                "_id": "67af0942376903b183b034b7"
+            },
+            "pendingRequest": {
+                "amount": 1005,
+                "currency": "NGN",
+                "merchantAmount": 1000,
+                "merchantCurrency": "NGN",
+                "_id": "67af0942376903b183b034b8"
+            },
+            "requestHistory": [],
+            "verification": {
+                "billingAddressLine1": "not_provided",
+                "billingAddressPostalCode": "not_provided",
+                "cvv": "match",
+                "expiry": "match",
+                "pin": "match",
+                "threeDSecure": "not_provided",
+                "safeToken": "match",
+                "authentication": "pin",
+                "_id": "67af0942376903b183b034b9"
+            },
+            "isDeleted": false,
+            "createdAt": "2025-02-14T09:13:38.093Z",
+            "updatedAt": "2025-02-14T09:13:38.093Z",
+            "feeDetails": [{
+                "contract": "61a18b8a4ddab599d20344a7",
+                "currency": "NGN",
+                "amount": 5,
+                "description": "Verve Card Authorization Fee",
+                "_id": "67af0942376903b183b034ba"
+            }],
+            "__v": 0
+        },
+        "_id": "67af0942376903b183b034cd"
+    },
+    "type": "authorization.request",
+    "pendingWebhook": false,
+    "webhookArchived": false,
+    "createdAt": 1739524418,
+    "_id": "67af0942376903b183b034cc"
+}
