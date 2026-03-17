@@ -1,58 +1,49 @@
 # safeHaven webhook receiver
 
-Small Firebase Functions project for receiving and responding to webhook requests.
+Small Node.js server for Render that receives a webhook, extracts `data.object._id`, fetches
+the authorization from the Sudo API, and returns:
+
+```json
+{
+  "statusCode": 200,
+  "data": {
+    "responseCode": "00"
+  }
+}
+```
+
+when the lookup succeeds.
 
 ## Endpoint
 
-After deployment, the HTTP function name is `webhook`.
+The webhook endpoint is:
 
-The current handler expects a `POST` request with a JSON body shaped like the sample in
-[`samplewehbook.json`](/Users/primetech/Web development/safeHaven-webhook/samplewehbook.json).
-It extracts `data.object._id`, calls `GET /cards/authorizations/{id}` on the Sudo API, and
-replies with the fetched authorization details.
+`POST /webhook`
 
 ## Environment variables
 
-Set these before running or deploying:
+Set these in your local `.env` file or in Render environment variables:
 
 - `SUDO_API_KEY`: your Sudo API key, sent as the `Authorization` header
-- `SUDO_API_BASE_URL`: optional, defaults to `https://api.sandbox.sudo.cards`
+- `SUDO_API_BASE_URL`: optional, for example `https://api.sudo.africa`
+- `PORT`: optional, Render sets this automatically
 
 ## Local development
 
-1. Install Firebase CLI if needed.
-2. Run `cd functions && npm install`
-3. Export your API key:
-
-```bash
-export SUDO_API_KEY="your-api-key"
-```
-
-4. Run `firebase emulators:start --only functions`
+1. Run `npm install`
+2. Run `npm start`
 
 Example request:
 
 ```bash
-curl -X POST http://127.0.0.1:5001/YOUR_PROJECT_ID/us-central1/webhook \
+curl -X POST http://127.0.0.1:3000/webhook \
   -H "Content-Type: application/json" \
-  --data @../samplewehbook.json
+  --data @samplewehbook.json
 ```
 
-## Deploy
+## Render deploy
 
-Run:
+- Build command: `npm install`
+- Start command: `npm start`
 
-```bash
-firebase deploy --only functions:webhook
-```
-
-For Firebase, set the secret in the environment you deploy from, for example:
-
-```bash
-export SUDO_API_KEY="your-api-key"
-firebase deploy --only functions:webhook
-```
-
-## Next step
-
-If you want, I can make the API key use Firebase Secret Manager instead of a plain environment variable.
+Set `SUDO_API_KEY` and `SUDO_API_BASE_URL` in the Render dashboard under environment variables.
