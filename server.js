@@ -10,7 +10,75 @@ const SUDO_API_BASE_URL =
   process.env.SUDO_API_BASE_URL || "https://api.sandbox.sudo.cards";
 const SUDO_API_KEY = process.env.SUDO_API_KEY || "";
 
+function redactHeaders(headers = {}) {
+  const clonedHeaders = { ...headers };
+
+  for (const key of Object.keys(clonedHeaders)) {
+    if (key.toLowerCase() === "authorization") {
+      clonedHeaders[key] = "[REDACTED]";
+    }
+  }
+
+  return clonedHeaders;
+}
+
+function logInfo(message, details = {}) {
+  console.log(
+    JSON.stringify({
+      level: "info",
+      message,
+      timestamp: new Date().toISOString(),
+      ...details,
+    })
+  );
+}
+
+function logWarn(message, details = {}) {
+  console.warn(
+    JSON.stringify({
+      level: "warn",
+      message,
+      timestamp: new Date().toISOString(),
+      ...details,
+    })
+  );
+}
+
+function logError(message, details = {}) {
+  console.error(
+    JSON.stringify({
+      level: "error",
+      message,
+      timestamp: new Date().toISOString(),
+      ...details,
+    })
+  );
+}
+
 app.use(express.json());
+app.use((req, res, next) => {
+  const startedAt = Date.now();
+
+  logInfo("Incoming request", {
+    method: req.method,
+    path: req.path,
+    query: req.query,
+    ip: req.ip,
+    headers: redactHeaders(req.headers),
+    body: req.body ?? null,
+  });
+
+  res.on("finish", () => {
+    logInfo("Request completed", {
+      method: req.method,
+      path: req.path,
+      statusCode: res.statusCode,
+      durationMs: Date.now() - startedAt,
+    });
+  });
+
+  next();
+});
 
 function buildWebhookSummary(payload) {
   const eventType = payload?.type || "unknown";
@@ -41,6 +109,13 @@ async function fetchAuthorizationById(id) {
   }
 
   const url = `${SUDO_API_BASE_URL}/cards/authorizations/${encodeURIComponent(id)}`;
+  logInfo("Calling Sudo authorization endpoint", {
+    url,
+    headers: {
+      Authorization: "[REDACTED]",
+    },
+  });
+
   const response = await fetch(url, {
     method: "GET",
     headers: {
@@ -59,6 +134,13 @@ async function fetchAuthorizationById(id) {
     }
   }
 
+  logInfo("Received Sudo authorization response", {
+    url,
+    statusCode: response.status,
+    ok: response.ok,
+    responseBody: data,
+  });
+
   if (!response.ok) {
     const error = new Error("Authorization lookup failed.");
     error.status = response.status;
@@ -70,6 +152,8 @@ async function fetchAuthorizationById(id) {
 }
 
 app.get("/", (_req, res) => {
+  logInfo("Health check hit");
+
   return res.status(200).json({
     ok: true,
     service: "safehaven-webhook-server",
@@ -81,7 +165,7 @@ app.post("/webhook", async (req, res) => {
   const body = req.body ?? null;
 
   if (!body || typeof body !== "object" || Array.isArray(body)) {
-    console.warn("Webhook rejected: invalid JSON body", {
+    logWarn("Webhook rejected: invalid JSON body", {
       method: req.method,
       path: req.path,
       contentType,
@@ -96,7 +180,7 @@ app.post("/webhook", async (req, res) => {
   const summary = buildWebhookSummary(body);
 
   if (!summary.eventType || !summary.objectId) {
-    console.warn("Webhook rejected: missing required fields", {
+    logWarn("Webhook rejected: missing required fields", {
       method: req.method,
       path: req.path,
       contentType,
@@ -109,7 +193,7 @@ app.post("/webhook", async (req, res) => {
     });
   }
 
-  console.log("Webhook received", {
+  logInfo("Webhook parsed successfully", {
     method: req.method,
     path: req.path,
     summary,
@@ -118,10 +202,11 @@ app.post("/webhook", async (req, res) => {
   try {
     const authorization = await fetchAuthorizationById(summary.objectId);
 
-    console.log("Authorization fetched", {
+    logInfo("Authorization fetched successfully", {
       objectId: summary.objectId,
       reference: summary.reference,
       authorizationId: authorization?.data?._id || null,
+      authorizationResponse: authorization,
     });
 
     return res.status(200).json({
@@ -131,7 +216,7 @@ app.post("/webhook", async (req, res) => {
       },
     });
   } catch (error) {
-    console.error("Authorization fetch failed", {
+    logError("Authorization fetch failed", {
       objectId: summary.objectId,
       reference: summary.reference,
       error: error.message,
@@ -153,5 +238,24 @@ app.post("/webhook", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Webhook server listening on port ${PORT}`);
+  logInfo("Webhook server listening", {
+    port: PORT,
+    sudoApiBaseUrl: SUDO_API_BASE_URL,
+    hasSudoApiKey: Boolean(SUDO_API_KEY),
+    nodeVersion: process.version,
+    envLoaded: true,
+  });
+});
+
+process.on("uncaughtException", (error) => {
+  logError("Uncaught exception", {
+    error: error.message,
+    stack: error.stack,
+  });
+});
+
+process.on("unhandledRejection", (reason) => {
+  logError("Unhandled rejection", {
+    reason,
+  });
 });
