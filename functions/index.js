@@ -30,6 +30,11 @@ function buildWebhookSummary(payload) {
   };
 }
 
+function isAuthorizationNotFoundError(error) {
+  const message = error?.responseBody?.message;
+  return error?.status === 400 && message === "Authorization not found.";
+}
+
 async function fetchAuthorizationById(id) {
   if (!SUDO_API_KEY) {
     throw new Error("Missing SUDO_API_KEY environment variable.");
@@ -140,6 +145,15 @@ exports.webhook = onRequest(
         status: error.status || 500,
         responseBody: error.responseBody || null,
       });
+
+      if (isAuthorizationNotFoundError(error)) {
+        return res.status(400).json({
+          statusCode: 400,
+          data: {
+            responseCode: "51",
+          },
+        });
+      }
 
       return res.status(error.status || 500).json({
         ok: false,

@@ -1,0 +1,429 @@
+{
+    "level": "info",
+    "message": "Incoming request",
+    "timestamp": "2026-03-17T10:47:24.548Z",
+    "method": "POST",
+    "path": "/webhook",
+    "query": {},
+    "ip": "::1",
+    "headers": {
+        "host": "safehaven-webhook.onrender.com",
+        "user-agent": "axios/1.6.2",
+        "content-length": "3848",
+        "accept": "application/json, text/plain, */*",
+        "accept-encoding": "gzip, br",
+        "authorization": "[REDACTED]",
+        "cdn-loop": "cloudflare; loops=1",
+        "cf-connecting-ip": "18.202.234.135",
+        "cf-ipcountry": "IE",
+        "cf-ray": "9ddb6b595aa86a60-PDX",
+        "cf-visitor": "{\"scheme\":\"https\"}",
+        "content-type": "application/json",
+        "render-proxy-ttl": "4",
+        "rndr-id": "10867fcd-22ba-490b",
+        "true-client-ip": "18.202.234.135",
+        "x-forwarded-for": "18.202.234.135, 104.23.160.34, 10.17.211.197",
+        "x-forwarded-proto": "https",
+        "x-request-start": "1773744444492112"
+    },
+    "body": {
+        "environment": "production",
+        "business": "696edb9889c90df3bcdbe067",
+        "data": {
+            "object": {
+                "business": "696edb9889c90df3bcdbe067",
+                "customer": {
+                    "_id": "698c3027e9bcc2892f20b7cf",
+                    "business": "696edb9889c90df3bcdbe067",
+                    "type": "individual",
+                    "name": "Trizzl",
+                    "phoneNumber": "07030338024",
+                    "emailAddress": "prince.muteh2@gmail.com",
+                    "status": "active",
+                    "individual": {
+                        "firstName": "AMOS",
+                        "lastName": "Daniel",
+                        "otherNames": "",
+                        "dob": "1990-05-15T00:00:00.000Z",
+                        "identity": {
+                            "type": "NIN",
+                            "number": "12345678901"
+                        }
+                    },
+                    "billingAddress": {
+                        "line1": "123 Example Street",
+                        "line2": "Suite 456",
+                        "city": "Lagos",
+                        "state": "Lagos",
+                        "country": "NG",
+                        "postalCode": "100001"
+                    },
+                    "isDeleted": false,
+                    "createdAt": "2026-02-11T07:30:47.117Z",
+                    "updatedAt": "2026-02-11T07:30:47.117Z",
+                    "__v": 0
+                },
+                "account": {
+                    "_id": "69738abcd1b0ec02410f768f",
+                    "business": "696edb9889c90df3bcdbe067",
+                    "type": "account",
+                    "currency": "NGN",
+                    "accountName": "KYE TECH GLOBAL  / SUDO SETTLEMENT ACCOUNT",
+                    "bankCode": "090286",
+                    "accountType": "Current",
+                    "accountNumber": "0112325754",
+                    "currentBalance": 0,
+                    "availableBalance": 0,
+                    "provider": "SafeHaven",
+                    "providerReference": "69738abc462b3a00240a489c",
+                    "referenceCode": "69738abc462b3a00240a489c",
+                    "isDefault": true,
+                    "isDeleted": false,
+                    "createdAt": "2026-01-23T14:50:36.925Z",
+                    "updatedAt": "2026-01-23T14:50:36.925Z",
+                    "charges": [],
+                    "__v": 0
+                },
+                "card": {
+                    "_id": "698ca1751a0ae44cf76e718f",
+                    "business": "696edb9889c90df3bcdbe067",
+                    "customer": "698c3027e9bcc2892f20b7cf",
+                    "account": "698ca1751a0ae44cf76e718c",
+                    "fundingSource": {
+                        "_id": "6995c46a82d3b219e534f48c",
+                        "business": "696edb9889c90df3bcdbe067",
+                        "type": "gateway",
+                        "status": "active",
+                        "jitGateway": {
+                            "url": "https://safehaven-webhook.onrender.com/webhook",
+                            "authorizationHeader": "Content-Type",
+                            "authorizeByDefault": false
+                        },
+                        "isDefault": false,
+                        "isDeleted": false,
+                        "createdAt": "2026-02-18T13:53:46.627Z",
+                        "updatedAt": "2026-03-17T10:45:10.353Z",
+                        "__v": 0
+                    },
+                    "program": null,
+                    "type": "physical",
+                    "brand": "Verve",
+                    "currency": "NGN",
+                    "maskedPan": "506136******4032",
+                    "expiryMonth": "10",
+                    "expiryYear": "2026",
+                    "status": "active",
+                    "spendingControls": {
+                        "channels": {
+                            "atm": true,
+                            "pos": true,
+                            "web": true,
+                            "mobile": true
+                        },
+                        "allowedCategories": [],
+                        "blockedCategories": [],
+                        "spendingLimits": [
+                            {
+                                "amount": 1000,
+                                "interval": "monthly",
+                                "categories": [
+                                    "0742"
+                                ]
+                            }
+                        ]
+                    },
+                    "is2FAEnrolled": true,
+                    "providerReference": "6922e3ab9fe95149af20d982",
+                    "isDigitalized": false,
+                    "accumulatedFees": 0,
+                    "totalFeesCharged": 0,
+                    "feeChargeDay": 1,
+                    "isDeleted": false,
+                    "createdAt": "2026-02-11T15:34:13.297Z",
+                    "updatedAt": "2026-03-04T11:45:52.284Z",
+                    "__v": 0,
+                    "is2FAEnabled": true
+                },
+                "amount": 0,
+                "fee": 5,
+                "vat": 0,
+                "approved": false,
+                "currency": "NGN",
+                "status": "pending",
+                "authorizationMethod": "online",
+                "balanceTransactions": [],
+                "merchantAmount": 100,
+                "merchantCurrency": "NGN",
+                "merchant": {
+                    "category": "7399",
+                    "name": "QTRCWMTNV/07030338024/8",
+                    "merchantId": "QUICKTELLERRCHG",
+                    "city": "89336640289",
+                    "state": "LA",
+                    "country": "NG",
+                    "postalCode": "100001"
+                },
+                "terminal": {
+                    "rrn": "923091017260",
+                    "stan": "017260",
+                    "terminalId": "3BOL0001",
+                    "terminalOperatingEnvironment": "off_premise",
+                    "terminalAttendance": "unattended",
+                    "terminalType": "adminstrative_terminal",
+                    "panEntryMode": "unknown",
+                    "pinEntryMode": "unknown",
+                    "cardHolderPresence": false,
+                    "cardPresence": false
+                },
+                "transactionMetadata": {
+                    "channel": "web",
+                    "type": "purchase",
+                    "reference": "9100263654923091017260"
+                },
+                "pendingRequest": {
+                    "amount": 105,
+                    "currency": "NGN",
+                    "merchantAmount": 100,
+                    "merchantCurrency": "NGN"
+                },
+                "requestHistory": [],
+                "verification": {
+                    "billingAddressLine1": "not_provided",
+                    "billingAddressPostalCode": "not_provided",
+                    "cvv": "match",
+                    "expiry": "match",
+                    "pin": "match",
+                    "threeDSecure": "not_provided",
+                    "safeToken": "match",
+                    "authentication": "pin"
+                },
+                "isDeleted": false,
+                "createdAt": "2026-03-17T10:47:24.190Z",
+                "_id": "69b9313c80dc0133c71f3d1c",
+                "feeDetails": [
+                    {
+                        "contract": "61a18b8a4ddab599d20344a7",
+                        "currency": "NGN",
+                        "amount": 5,
+                        "description": "Verve Card Authorization Fee"
+                    }
+                ],
+                "__v": 0
+            }
+        },
+        "type": "authorization.request",
+        "pendingWebhook": false,
+        "webhookArchived": false,
+        "createdAt": 1773744444,
+        "_id": "69b9313c80dc0133c71f3d28"
+    }
+}
+{
+    "level": "info",
+    "message": "Webhook parsed successfully",
+    "timestamp": "2026-03-17T10:47:24.549Z",
+    "method": "POST",
+    "path": "/webhook",
+    "summary": {
+        "eventType": "authorization.request",
+        "environment": "production",
+        "eventId": "69b9313c80dc0133c71f3d28",
+        "objectId": "69b9313c80dc0133c71f3d1c",
+        "status": "pending",
+        "approved": false,
+        "amount": 105,
+        "currency": "NGN",
+        "reference": "9100263654923091017260",
+        "customerName": "Trizzl",
+        "accountNumber": "0112325754"
+    }
+}
+{
+    "level": "info",
+    "message": "Calling Sudo authorization endpoint",
+    "timestamp": "2026-03-17T10:47:24.549Z",
+    "url": "https://api.sudo.africa/cards/authorizations/69b9313c80dc0133c71f3d1c",
+    "headers": {
+        "Authorization": "[REDACTED]"
+    }
+}
+{
+    "level": "info",
+    "message": "Received Sudo authorization response",
+    "timestamp": "2026-03-17T10:47:25.719Z",
+    "url": "https://api.sudo.africa/cards/authorizations/69b9313c80dc0133c71f3d1c",
+    "statusCode": 200,
+    "ok": true,
+    "responseBody": {
+        "statusCode": 400,
+        "message": "Authorization not found."
+    }
+}
+{
+    "level": "info",
+    "message": "Authorization fetched successfully",
+    "timestamp": "2026-03-17T10:47:25.719Z",
+    "objectId": "69b9313c80dc0133c71f3d1c",
+    "reference": "9100263654923091017260",
+    "authorizationId": null,
+    "authorizationResponse": {
+        "statusCode": 400,
+        "message": "Authorization not found."
+    }
+}
+{
+    "level": "info",
+    "message": "Request completed",
+    "timestamp": "2026-03-17T10:47:25.720Z",
+    "method": "POST",
+    "path": "/webhook",
+    "statusCode": 200,
+    "durationMs": 1172
+}
+{
+    "level": "info",
+    "message": "Incoming request",
+    "timestamp": "2026-03-17T10:47:27.171Z",
+    "method": "POST",
+    "path": "/webhook",
+    "query": {},
+    "ip": "::1",
+    "headers": {
+        "host": "safehaven-webhook.onrender.com",
+        "user-agent": "axios/1.6.2",
+        "content-length": "1330",
+        "accept": "application/json, text/plain, */*",
+        "accept-encoding": "gzip, br",
+        "authorization": "[REDACTED]",
+        "cdn-loop": "cloudflare; loops=1",
+        "cf-connecting-ip": "18.202.234.135",
+        "cf-ipcountry": "IE",
+        "cf-ray": "9ddb6b685e9f6a60-DUB",
+        "cf-visitor": "{\"scheme\":\"https\"}",
+        "content-type": "application/json",
+        "render-proxy-ttl": "4",
+        "rndr-id": "35289ce6-4f49-404c",
+        "true-client-ip": "18.202.234.135",
+        "x-forwarded-for": "18.202.234.135, 162.158.6.54, 10.17.211.197",
+        "x-forwarded-proto": "https",
+        "x-request-start": "1773744447166617"
+    },
+    "body": {
+        "environment": "production",
+        "business": "696edb9889c90df3bcdbe067",
+        "data": {
+            "object": {
+                "business": "696edb9889c90df3bcdbe067",
+                "customer": "698c3027e9bcc2892f20b7cf",
+                "account": "69738abcd1b0ec02410f768f",
+                "card": "698ca1751a0ae44cf76e718f",
+                "authorization": "69b9313c80dc0133c71f3d1c",
+                "amount": -105,
+                "fee": -5,
+                "vat": 0,
+                "currency": "NGN",
+                "type": "capture",
+                "balanceTransactions": [],
+                "merchantAmount": -100,
+                "merchantCurrency": "NGN",
+                "merchant": {
+                    "category": "7399",
+                    "name": "QTRCWMTNV/07030338024/8",
+                    "merchantId": "QUICKTELLERRCHG",
+                    "city": "89336640289",
+                    "state": "LA",
+                    "country": "NG",
+                    "postalCode": "100001"
+                },
+                "terminal": {
+                    "rrn": "923091017260",
+                    "stan": "017260",
+                    "terminalId": "3BOL0001",
+                    "terminalOperatingEnvironment": "off_premise",
+                    "terminalAttendance": "unattended",
+                    "terminalType": "adminstrative_terminal",
+                    "panEntryMode": "unknown",
+                    "pinEntryMode": "unknown",
+                    "cardHolderPresence": false,
+                    "cardPresence": false
+                },
+                "transactionMetadata": {
+                    "channel": "web",
+                    "type": "purchase",
+                    "reference": "9100263654923091017260"
+                },
+                "isDeleted": false,
+                "createdAt": "2026-03-17T10:47:26.583Z",
+                "_id": "69b9313e80dc0133c71f3d4e",
+                "feeDetails": [
+                    {
+                        "contract": "61a18b8a4ddab599d20344a7",
+                        "currency": "NGN",
+                        "amount": 5,
+                        "description": "Verve Card Authorization Fee"
+                    }
+                ],
+                "__v": 0
+            }
+        },
+        "type": "transaction.created",
+        "pendingWebhook": true,
+        "webhookArchived": false,
+        "createdAt": 1773744446,
+        "_id": "69b9313e80dc0133c71f3d54",
+        "__v": 0
+    }
+}
+{
+    "level": "info",
+    "message": "Webhook parsed successfully",
+    "timestamp": "2026-03-17T10:47:27.172Z",
+    "method": "POST",
+    "path": "/webhook",
+    "summary": {
+        "eventType": "transaction.created",
+        "environment": "production",
+        "eventId": "69b9313e80dc0133c71f3d54",
+        "objectId": "69b9313e80dc0133c71f3d4e",
+        "status": null,
+        "approved": null,
+        "amount": -105,
+        "currency": "NGN",
+        "reference": "9100263654923091017260",
+        "customerName": null,
+        "accountNumber": null
+    }
+}
+{
+    "level": "info",
+    "message": "Calling Sudo authorization endpoint",
+    "timestamp": "2026-03-17T10:47:27.172Z",
+    "url": "https://api.sudo.africa/cards/authorizations/69b9313e80dc0133c71f3d4e",
+    "headers": {
+        "Authorization": "[REDACTED]"
+    }
+}
+{
+    "level": "info",
+    "message": "Received Sudo authorization response",
+    "timestamp": "2026-03-17T10:47:31.495Z",
+    "url": "https://api.sudo.africa/cards/authorizations/69b9313e80dc0133c71f3d4e",
+    "statusCode": 200,
+    "ok": true,
+    "responseBody": {
+        "statusCode": 400,
+        "message": "Authorization not found."
+    }
+}
+{
+    "level": "info",
+    "message": "Authorization fetched successfully",
+    "timestamp": "2026-03-17T10:47:31.496Z",
+    "objectId": "69b9313e80dc0133c71f3d4e",
+    "reference": "9100263654923091017260",
+    "authorizationId": null,
+    "authorizationResponse": {
+        "statusCode": 400,
+        "message": "Authorization not found."
+    }
+}
