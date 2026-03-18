@@ -105,6 +105,22 @@ exports.webhook = onRequest(
     }
 
     const summary = buildWebhookSummary(body);
+    const expectedEventType = "authorization.request";
+
+    if (summary.eventType !== expectedEventType) {
+      logger.info("Webhook ignored: unsupported event type", {
+        method: req.method,
+        path: req.path,
+        contentType,
+        eventType: summary.eventType,
+      });
+
+      return res.status(200).json({
+        ok: true,
+        ignored: true,
+        message: `Ignored webhook event type: ${summary.eventType || "unknown"}.`,
+      });
+    }
 
     if (!summary.eventType || !summary.objectId) {
       logger.warn("Webhook rejected: missing required fields", {
