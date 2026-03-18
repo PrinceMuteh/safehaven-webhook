@@ -1,0 +1,206 @@
+{
+    "level": "info",
+    "message": "Incoming request",
+    "timestamp": "2026-03-18T08:11:15.747Z",
+    "method": "POST",
+    "path": "/webhook",
+    "query": {},
+    "ip": "::1",
+    "headers": {
+        "host": "safehaven-webhook.onrender.com",
+        "user-agent": "axios/1.6.2",
+        "content-length": "3735",
+        "accept": "application/json, text/plain, */*",
+        "accept-encoding": "gzip, br",
+        "authorization": "[REDACTED]",
+        "cdn-loop": "cloudflare; loops=1",
+        "cf-connecting-ip": "102.69.242.171",
+        "cf-ipcountry": "NG",
+        "cf-ray": "9de2c3fe9c3c41f6-SEA",
+        "cf-visitor": "{\"scheme\":\"https\"}",
+        "content-type": "application/json",
+        "render-proxy-ttl": "4",
+        "rndr-id": "47ad25a3-3b27-4dab",
+        "true-client-ip": "102.69.242.171",
+        "x-forwarded-for": "102.69.242.171, 172.71.151.230, 10.17.211.197",
+        "x-forwarded-proto": "https",
+        "x-request-start": "1773821475733060"
+    },
+    "body": {
+        "environment": "development",
+        "business": "696edb9889c90df3bcdbe067",
+        "data": {
+            "object": {
+                "_id": "69ba5e22734a4457f2d06dc5",
+                "business": "696edb9889c90df3bcdbe067",
+                "customer": {
+                    "_id": "69ba46bb734a4457f2d063f5",
+                    "business": "696edb9889c90df3bcdbe067",
+                    "type": "individual",
+                    "name": "Prince Muteh",
+                    "phoneNumber": "7030338024",
+                    "emailAddress": "prince.muteh@gmail.com",
+                    "status": "active",
+                    "individual": {
+                        "firstName": "Prince",
+                        "lastName": "Muteh",
+                        "otherNames": "",
+                        "dob": "2026-03-18T00:00:00.000Z",
+                        "identity": {
+                            "type": "BVN",
+                            "number": "1234567890"
+                        }
+                    },
+                    "billingAddress": {
+                        "line1": "University Of Maiduguri",
+                        "line2": "",
+                        "city": "Garki",
+                        "state": "Abuja Federal Capital Territory",
+                        "country": "Nigeria",
+                        "postalCode": "600211"
+                    },
+                    "isDeleted": false,
+                    "createdAt": "2026-03-18T06:31:23.112Z",
+                    "updatedAt": "2026-03-18T06:31:23.112Z",
+                    "__v": 0
+                },
+                "account": {
+                    "_id": "69ba46d6734a4457f2d06428",
+                    "business": "696edb9889c90df3bcdbe067",
+                    "type": "wallet",
+                    "currency": "NGN",
+                    "accountName": "SUDO / PRINCE MUTEH",
+                    "bankCode": "999240",
+                    "accountType": "Current",
+                    "accountNumber": "5010251947",
+                    "currentBalance": 0,
+                    "availableBalance": 0,
+                    "provider": "SafeHaven",
+                    "providerReference": "69ba46d6012c2100246f7a38",
+                    "referenceCode": "subacc_1773815509991",
+                    "reloadable": true,
+                    "isDefault": true,
+                    "isDeleted": false,
+                    "createdAt": "2026-03-18T06:31:50.409Z",
+                    "updatedAt": "2026-03-18T06:31:50.409Z",
+                    "charges": [],
+                    "__v": 0
+                },
+                "card": {
+                    "_id": "69ba46d8734a4457f2d06430",
+                    "business": "696edb9889c90df3bcdbe067",
+                    "customer": "69ba46bb734a4457f2d063f5",
+                    "account": "69ba46d6734a4457f2d06428",
+                    "fundingSource": {
+                        "_id": "69ba4677734a4457f2d06383",
+                        "business": "696edb9889c90df3bcdbe067",
+                        "type": "gateway",
+                        "status": "active",
+                        "jitGateway": {
+                            "url": "https://safehaven-webhook.onrender.com/webhook",
+                            "authorizationHeader": "",
+                            "authorizeByDefault": false
+                        },
+                        "isDefault": false,
+                        "isDeleted": false,
+                        "createdAt": "2026-03-18T06:30:15.992Z",
+                        "updatedAt": "2026-03-18T06:30:15.992Z",
+                        "__v": 0
+                    },
+                    "program": null,
+                    "type": "virtual",
+                    "brand": "Verve",
+                    "currency": "NGN",
+                    "maskedPan": "506321*********3111",
+                    "expiryMonth": "03",
+                    "expiryYear": "2029",
+                    "status": "active",
+                    "is2FAEnabled": true,
+                    "is2FAEnrolled": true,
+                    "isDefaultPINChanged": false,
+                    "disposable": false,
+                    "refundAccount": null,
+                    "providerReference": "69ba46d8a61d0550d690e79e",
+                    "isDigitalized": false,
+                    "accumulatedFees": 0,
+                    "totalFeesCharged": 0,
+                    "feeChargeDay": 1,
+                    "isDeleted": false,
+                    "createdAt": "2026-03-18T06:31:52.457Z",
+                    "updatedAt": "2026-03-18T06:31:52.457Z",
+                    "__v": 0
+                },
+                "amount": 0,
+                "fee": 5,
+                "vat": 0,
+                "approved": false,
+                "currency": "NGN",
+                "status": "pending",
+                "authorizationMethod": "online",
+                "balanceTransactions": [],
+                "merchantAmount": 2000,
+                "merchantCurrency": "NGN",
+                "merchant": {
+                    "category": "0763",
+                    "name": "SUDO SIMULATOR",
+                    "merchantId": "SUDOSIMULATOR01",
+                    "city": "JAHI",
+                    "state": "AB",
+                    "country": "NG",
+                    "postalCode": "100001"
+                },
+                "terminal": {
+                    "rrn": "196426456256",
+                    "stan": "112768",
+                    "terminalId": "3SUDOSIM",
+                    "terminalOperatingEnvironment": "on_premise",
+                    "terminalAttendance": "unattended",
+                    "terminalType": "ecommerce",
+                    "panEntryMode": "keyed_in",
+                    "pinEntryMode": "keyed_in",
+                    "cardHolderPresence": true,
+                    "cardPresence": true
+                },
+                "transactionMetadata": {
+                    "channel": "web",
+                    "type": "purchase",
+                    "reference": "5010251947196426456256"
+                },
+                "pendingRequest": {
+                    "amount": 2005,
+                    "currency": "NGN",
+                    "merchantAmount": 2000,
+                    "merchantCurrency": "NGN"
+                },
+                "requestHistory": [],
+                "verification": {
+                    "billingAddressLine1": "not_provided",
+                    "billingAddressPostalCode": "not_provided",
+                    "cvv": "match",
+                    "expiry": "match",
+                    "pin": "match",
+                    "threeDSecure": "not_provided",
+                    "safeToken": "match",
+                    "authentication": "pin"
+                },
+                "isDeleted": false,
+                "createdAt": "2026-03-18T08:11:14.374Z",
+                "updatedAt": "2026-03-18T08:11:14.374Z",
+                "feeDetails": [
+                    {
+                        "contract": "61a18b8a4ddab599d20344a7",
+                        "currency": "NGN",
+                        "amount": 5,
+                        "description": "Verve Card Authorization Fee"
+                    }
+                ],
+                "__v": 0
+            }
+        },
+        "type": "authorization.request",
+        "pendingWebhook": false,
+        "webhookArchived": false,
+        "createdAt": 1773821474,
+        "_id": "69ba5e22734a4457f2d06dcc"
+    }
+}

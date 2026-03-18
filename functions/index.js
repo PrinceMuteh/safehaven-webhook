@@ -1,7 +1,6 @@
 "use strict";
 
 const { onRequest } = require("firebase-functions/v2/https");
-const logger = require("firebase-functions/logger");
 
 const SUDO_API_BASE_URL =
   process.env.SUDO_API_BASE_URL || "";
@@ -41,11 +40,6 @@ async function fetchAuthorizationById(id) {
   }
 
   const url = `${SUDO_API_BASE_URL}/cards/authorizations/${encodeURIComponent(id)}`;
-  logger.info("Fetching authorization by id", {
-    id,
-    encodedId: encodeURIComponent(id),
-    url,
-  });
   const response = await fetch(url, {
     method: "GET",
     headers: {
@@ -92,12 +86,6 @@ exports.webhook = onRequest(
     const body = req.body ?? null;
 
     if (!body || typeof body !== "object" || Array.isArray(body)) {
-      logger.warn("Webhook rejected: invalid JSON body", {
-        method: req.method,
-        path: req.path,
-        contentType,
-      });
-
       return res.status(400).json({
         ok: false,
         error: "Invalid webhook payload. Expected a JSON object body.",
@@ -108,13 +96,6 @@ exports.webhook = onRequest(
     const expectedEventType = "authorization.request";
 
     if (summary.eventType !== expectedEventType) {
-      logger.info("Webhook ignored: unsupported event type", {
-        method: req.method,
-        path: req.path,
-        contentType,
-        eventType: summary.eventType,
-      });
-
       return res.status(200).json({
         ok: true,
         ignored: true,
@@ -123,34 +104,14 @@ exports.webhook = onRequest(
     }
 
     if (!summary.eventType || !summary.objectId) {
-      logger.warn("Webhook rejected: missing required fields", {
-        method: req.method,
-        path: req.path,
-        contentType,
-        body,
-      });
-
       return res.status(400).json({
         ok: false,
         error: "Invalid webhook payload. Missing event type or object identifier.",
       });
     }
 
-    logger.info("Webhook received", {
-      method: req.method,
-      path: req.path,
-      contentType,
-      summary,
-    });
-
     try {
       const authorization = await fetchAuthorizationById(summary.objectId);
-
-      logger.info("Authorization fetched", {
-        objectId: summary.objectId,
-        reference: summary.reference,
-        authorizationId: authorization?.data?._id || null,
-      });
 
       return res.status(200).json({
         statusCode: 200,
@@ -159,14 +120,6 @@ exports.webhook = onRequest(
         },
       });
     } catch (error) {
-      logger.error("Authorization fetch failed", {
-        objectId: summary.objectId,
-        reference: summary.reference,
-        error: error.message,
-        status: error.status || 500,
-        responseBody: error.responseBody || null,
-      });
-
       if (isAuthorizationNotFoundError(error)) {
         return res.status(400).json({
           statusCode: 400,

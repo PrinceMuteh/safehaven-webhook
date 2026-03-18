@@ -204,6 +204,16 @@ app.post("/webhook", async (req, res) => {
     summary,
   });
 
+  const expectedEventType = "authorization.request";
+
+  if (summary.eventType !== expectedEventType) {
+    return res.status(200).json({
+      ok: true,
+      ignored: true,
+      message: `Ignored webhook event type: ${summary.eventType || "unknown"}.`,
+    });
+  }
+
   try {
     const authorization = await fetchAuthorizationById(summary.objectId);
 
