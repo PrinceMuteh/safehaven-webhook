@@ -41,6 +41,11 @@ async function fetchAuthorizationById(id) {
   }
 
   const url = `${SUDO_API_BASE_URL}/cards/authorizations/${encodeURIComponent(id)}`;
+  logger.info("Fetching authorization by id", {
+    id,
+    encodedId: encodeURIComponent(id),
+    url,
+  });
   const response = await fetch(url, {
     method: "GET",
     headers: {
