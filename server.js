@@ -108,6 +108,13 @@ function isAuthorizationNotFoundError(error) {
   return error?.status === 400 && message === "Authorization not found.";
 }
 
+function isAuthorizationNotFoundResponse(responseBody) {
+  return (
+    responseBody?.statusCode === 400 &&
+    responseBody?.message === "Authorization not found."
+  );
+}
+
 async function fetchAuthorizationById(id) {
   if (!SUDO_API_KEY) {
     throw new Error("Missing SUDO_API_KEY environment variable.");
@@ -145,6 +152,13 @@ async function fetchAuthorizationById(id) {
     ok: response.ok,
     responseBody: data,
   });
+
+  if (isAuthorizationNotFoundResponse(data)) {
+    const error = new Error("Authorization lookup failed.");
+    error.status = 400;
+    error.responseBody = data;
+    throw error;
+  }
 
   if (!response.ok) {
     const error = new Error("Authorization lookup failed.");
